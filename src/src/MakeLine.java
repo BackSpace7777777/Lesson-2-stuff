@@ -19,7 +19,7 @@ public class MakeLine extends Main{
     private JTextField x1,y1,x2,y2;
     private JLabel xy[]=new JLabel[4];
     private JCheckBox useMouse;
-    private int mx,my,ix1,ix2,iy1,iy2;
+    private int mx,my,ix1=-1,ix2=-1,iy1=-1,iy2=-1;
     private boolean mousePos1=false,mousePos2=false,usePos=false;
     public MakeLine()
     {
@@ -55,11 +55,9 @@ public class MakeLine extends Main{
                 super.paintComponent(g);
                 g.clearRect(0,0,panel.getWidth(),panel.getHeight());
                 g.setColor(Color.GRAY);
-                g.fillRect(0,0,panel.getWidth(),panel.getHeight());
-                if(useMouse.isSelected())
-                {
-                    
-                }
+                g.fillRect(0,0,panel.getWidth(),panel.getHeight()); 
+                g.setColor(Color.WHITE);
+                g.drawLine(ix1,iy1,ix2,iy2);
                 repaint();
             }
         };
@@ -106,10 +104,28 @@ public class MakeLine extends Main{
             public void run() {
                 while(true)
                 {
-                    
+                    try
+                    {
+                        if(useMouse.isSelected())
+                        {
+                            x1.setText("" + ix1);
+                            x2.setText("" + ix2);
+                            y1.setText("" + iy1);
+                            y2.setText("" + iy2);
+                        }
+                        else
+                        {
+                            ix1=Integer.valueOf(x1.getText());
+                            ix2=Integer.valueOf(x2.getText());
+                            iy1=Integer.valueOf(y1.getText());
+                            iy2=Integer.valueOf(y2.getText());
+                        }
+                        Thread.sleep(16);
+                    }catch(Exception ex){}
                 }
             }
         });
+        checkCoords.start();
     }
     public void visible(boolean tf)
     {
@@ -118,6 +134,14 @@ public class MakeLine extends Main{
             backButton.setVisible(true);
             frame.setSize(640,640);
             frame.setTitle("Lesson 2 - Make a Line");
+            x1.setText("");
+            x2.setText("");
+            y1.setText("");
+            y2.setText("");
+            ix1=-1;
+            ix2=-1;
+            iy1=-1;
+            iy2=-1;
         }
         else
         {
