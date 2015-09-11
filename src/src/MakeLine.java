@@ -77,9 +77,6 @@ public class MakeLine extends Main{
                     iy2=e.getY();
                 }
             }
-            public void mouseReleased(MouseEvent e) {
-                
-            }
         });
         panel.setVisible(false);
         panel.setBounds((640/2)-200,40,400,400);
