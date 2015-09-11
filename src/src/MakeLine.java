@@ -19,7 +19,7 @@ public class MakeLine extends Main{
     private JTextField x1,y1,x2,y2;
     private JLabel xy[]=new JLabel[4];
     private JCheckBox useMouse;
-    private int mx,my,ix1=-1,ix2=-1,iy1=-1,iy2=-1;
+    private int mx,my,ix1=-10,ix2=-10,iy1=-10,iy2=-10;
     private boolean mousePos1=false,mousePos2=false,usePos=false;
     public MakeLine()
     {
@@ -58,12 +58,14 @@ public class MakeLine extends Main{
                 g.fillRect(0,0,panel.getWidth(),panel.getHeight()); 
                 g.setColor(Color.WHITE);
                 g.drawLine(ix1,iy1,ix2,iy2);
+                g.setColor(Color.GREEN);
+                g.drawString("(x:" + ix1 + ",y:" + iy1 + ")",ix1,iy1);
+                g.drawString("(x:" + ix2 + ",y:" + iy2 + ")",ix2,iy2);
                 repaint();
             }
         };
         panel.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                System.out.println(SwingUtilities.isRightMouseButton(e) + " " + SwingUtilities.isLeftMouseButton(e));
                 if(SwingUtilities.isLeftMouseButton(e) && useMouse.isSelected())
                 {
                     ix1=e.getX();
@@ -138,10 +140,10 @@ public class MakeLine extends Main{
             x2.setText("");
             y1.setText("");
             y2.setText("");
-            ix1=-1;
-            ix2=-1;
-            iy1=-1;
-            iy2=-1;
+            ix1=-10;
+            ix2=-10;
+            iy1=-10;
+            iy2=-10;
         }
         else
         {
