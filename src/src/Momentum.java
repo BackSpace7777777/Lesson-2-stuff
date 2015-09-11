@@ -41,7 +41,7 @@ public class Momentum extends Main{
                     {
                         if(!mass.getText().equals("") && !velocity.getText().equals(""))
                         {
-                            answer.setText(""+((Integer.valueOf(mass.getText()))*(Integer.valueOf(velocity.getText()))));
+                            answer.setText(""+((Double.valueOf(mass.getText()))*(Double.valueOf(velocity.getText()))));
                         }
                     }
                     catch(Exception ex){}
