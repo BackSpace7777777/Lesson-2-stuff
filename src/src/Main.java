@@ -76,7 +76,7 @@ public class Main {
         ml=new MakeLine();
         bg=new BarGraph();
         frame.add(backButton);
-        frame.add(circle);
+        //frame.add(circle);
         frame.add(barGraph);
         frame.add(makeLine);
         frame.add(pizza);
